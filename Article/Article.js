@@ -86,6 +86,7 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+  
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,3 +113,69 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+
+let createArticles = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+
+  let articleMain = document.createElement('div')
+  let articleTitle = document.createElement('h2');
+  let articleDate = document.createElement('p');
+  let articleP1 = document.createElement('p');
+  let articleP2 = document.createElement('p');
+  let articleP3 = document.createElement('p');
+  let expandBtn = document.createElement('span');
+
+  articleMain.appendChild(articleTitle);
+  articleMain.appendChild(articleDate);
+  articleMain.appendChild(articleP1);
+  articleMain.appendChild(articleP2);
+  articleMain.appendChild(articleP3);
+  articleMain.appendChild(expandBtn);
+
+  articleMain.classList.add('article')
+  articleDate.classList.add('date');
+  expandBtn.classList.add('expandButton');
+
+
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleP1.textContent = firstParagraph;
+  articleP2.textContent = secondParagraph;
+  articleP3.textContent = thirdParagraph;
+  expandBtn.textContent = 'Click to expand'
+  
+
+
+ expandBtn.addEventListener('click', (ele) => {
+
+    articleMain.classList.toggle('article-open')
+ })
+  
+  return articleMain;
+}
+
+data.push({
+
+  title: 'Hello My name is Pedro',
+  
+  date: 'Jan 21st, 2020',
+  firstParagraph: 'Hi HiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHi ',
+  
+  secondParagraph: 'HiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHi',
+  
+  thirdParagraph: 'HiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHi'
+  
+  });
+
+let articles = document.querySelector('.articles')
+
+data.forEach(ele => {
+
+  let art = createArticles(ele.title, ele.date, ele.firstParagraph, ele.secondParagraph, ele.thirdParagraph);
+  articles.appendChild(art);
+});
+
+
+
